@@ -1,6 +1,11 @@
 name: github-actions-hello-parametrized
 on: 
     push:
+        inputs:
+          input_text:
+            description: 'Text to display'     
+            required: true
+            default: 'Hello World
     workflow_dispatch:
         inputs:
           input_text:
@@ -8,15 +13,15 @@ on:
             required: true
             default: 'Hello World'
 jobs:
-  hello-job:
-    runs-on: ubuntu-latest
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v2
-      - name: Install dependencies
-        run:
-            sudo apt update;
-            sudo apt install -y figlet
-      - name: Write
-        run:
-            figlet "${{ github.event.inputs.input_text }}"
+    hello-job:
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout repo
+            uses: actions/checkout@v2
+          - name: Install dependencies
+            run:
+                sudo apt update;
+                sudo apt install -y figlet
+          - name: Write
+            run:
+                figlet "${{ github.event.inputs.input_text }}"
