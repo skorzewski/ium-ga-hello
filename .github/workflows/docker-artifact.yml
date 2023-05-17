@@ -1,0 +1,34 @@
+name: github-actions-hello-docker-artifact
+on: 
+    workflow_dispatch:
+        inputs:
+            input_text:
+                description: 'Who to greet'     
+                required: true
+                default: 'World'
+jobs:
+    hello-job:
+        name: "Do all the hard stuff"
+        runs-on: ubuntu-latest
+        steps:
+          - name: Checkout repo
+            uses: actions/checkout@v2
+          - name: Use docker action
+            id: hello
+            uses: ./
+            with:
+                who-to-greet: "${{ github.event.inputs.input_text }}"
+          # Use the output from the `hello` step
+          - name: Get the output time
+            run: echo "The time was ${{ steps.hello.outputs.time }}"
+    archive:
+        name: "Archive the artifacts"
+        runs-on: ubuntu:latest
+        needs: hello-job
+          - name: Archive artifacts
+            uses: actions/upload-artifact@v3
+            with:
+                name: figlet-output
+                path: figlet.txt
+                   
+         
