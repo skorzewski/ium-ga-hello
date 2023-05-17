@@ -25,6 +25,7 @@ jobs:
         name: "Archive the artifacts"
         runs-on: ubuntu:latest
         needs: hello-job
+        steps:
           - name: Archive artifacts
             uses: actions/upload-artifact@v3
             with:
