@@ -2,16 +2,16 @@ name: github-actions-hello-parametrized
 on: 
     push:
         inputs:
-          input_text:
-            description: 'Text to display'     
-            required: true
-            default: 'Hello World
+            input_text:
+                description: 'Text to display'     
+                required: true
+                default: 'Hello World
     workflow_dispatch:
         inputs:
-          input_text:
-            description: 'Text to display'     
-            required: true
-            default: 'Hello World'
+            input_text:
+                description: 'Text to display'     
+                required: true
+                default: 'Hello World'
 jobs:
     hello-job:
         runs-on: ubuntu-latest
