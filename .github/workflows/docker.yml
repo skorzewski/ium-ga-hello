@@ -3,9 +3,9 @@ on:
     workflow_dispatch:
         inputs:
             input_text:
-                description: 'Text to display'     
+                description: 'Who to greet'     
                 required: true
-                default: 'Hello World'
+                default: 'World'
 jobs:
     hello-job:
         runs-on: ubuntu-latest
@@ -13,7 +13,7 @@ jobs:
           - name: Use docker action
             uses: ./.github/
             with:
-                who-to-greet: "${{ github.event.inputs.input_text }"
+                who-to-greet: "${{ github.event.inputs.input_text }}"
       # Use the output from the `hello` step
           - name: Get the output time
             run: echo "The time was ${{ steps.hello.outputs.time }}"
