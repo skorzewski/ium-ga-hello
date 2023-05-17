@@ -1,11 +1,5 @@
 name: github-actions-hello-parametrized
 on: 
-    push:
-        inputs:
-            input_text:
-                description: 'Text to display'     
-                required: true
-                default: 'Hello World
     workflow_dispatch:
         inputs:
             input_text:
