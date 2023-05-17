@@ -13,6 +13,7 @@ jobs:
           - name: Checkout repo
             uses: actions/checkout@v2
           - name: Use docker action
+            id: hello
             uses: ./
             with:
                 who-to-greet: "${{ github.event.inputs.input_text }}"
