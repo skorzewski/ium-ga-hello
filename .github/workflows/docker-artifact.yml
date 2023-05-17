@@ -20,7 +20,7 @@ jobs:
                 who-to-greet: "${{ github.event.inputs.input_text }}"
           # Use the output from the `hello` step
           - name: Get the output time
-            run: echo "The time was ${{ steps.hello.outputs.time }}"
+            run: echo "The time was ${{ steps.hello.outputs.time }}"  > time.txt
     archive:
         name: "Archive the artifacts"
         runs-on: ubuntu-latest
@@ -30,6 +30,8 @@ jobs:
             uses: actions/upload-artifact@v3
             with:
                 name: figlet-output
-                path: figlet.txt
+                path: |
+                    figlet.txt
+                    time.txt
                    
          
