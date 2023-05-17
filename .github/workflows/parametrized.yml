@@ -1,7 +1,7 @@
 name: github-actions-hello-parametrized
 on: 
-    push
-    workflow_dispatch:
+    - push
+    - workflow_dispatch:
         inputs:
           input_text:
             description: 'Text to display'     
