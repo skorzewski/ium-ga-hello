@@ -1,9 +1,9 @@
 name: github-actions-hello-docker
-on: 
+on:
     workflow_dispatch:
         inputs:
             input_text:
-                description: 'Who to greet'     
+                description: 'Who to greet'
                 required: true
                 default: 'World'
 jobs:
@@ -21,10 +21,10 @@ jobs:
           - name: Get the output time
             run: echo "The time was ${{ steps.hello.outputs.time }}"
     archive:
+        runs-on: ubuntu-latest
+        steps:
           - name: Archive artifacts
             uses: actions/upload-artifact@v3
             with:
                 name: figlet-output
                 path: figlet.txt
-                   
-         
